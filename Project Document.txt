@@ -1,0 +1,85 @@
+1.Findings from EDA
+
+	Dataset Overview: 10,000 rows × 20 features + target.
+
+	Target Feature: Slightly imbalanced (51% defaults and 49% non-defaults).
+
+	Numeric Features:
+
+		Right-skewed with outliers: income, loan_amount, savings, monthly_expenses.
+
+		Symmetric/normal-like: age, credit_score.
+
+	Categorical Features:
+
+		Contain typos/inconsistencies (e.g., "Bachlors" vs "Bachelors").
+
+	Correlations:
+
+		Strong positive: income ↔ target.
+
+		Moderate negative: debt_to_income ↔ target.
+
+		Most other variables weakly correlated.
+
+2. Preprocessing Decisions
+
+	Missing Values:
+
+		Numeric → imputed with mean.
+
+		Categorical → replaced with "Most Frequent".
+
+	Categorical Cleaning: Fixed typos (e.g., "Bachlors" → "Bachelors").
+
+	Feature Engineering : signup_recency_days from signup date.
+
+	Outliers: Used Capping Technique
+
+	Scaling : StandardScaler 
+
+	Encoding: One-Hot Encoding and ordinal encodingfor categorical variables
+
+3. Model Comparison and Results
+
+	We trained five models and compared them using accuracy, precision, recall, F1-score, and confusion matrix.
+
+	Model			Accuracy	Precision	Recall		F1-score	
+
+	Logistic Regression	~93%		~94%		~91%		~92%
+
+	Decision Tree		~92%		~91%		~92%		~92%
+
+	SVM 			~93%		~94%		~90%		~93%
+
+	Random Forest 		~94%		~95%		~92%		~93%
+
+	XGBoost			~96%		~95%		~96%		~95%
+
+XGBoost was the best model, achieving ~96% accuracy and F1-score.
+
+4. Final Conclusions and Reflections
+
+	Proper preprocessing (imputation, scaling, encoding, outlier treatment) was crucial to achieving strong results.
+
+	Income and Debt-to-Income Ratio were the most influential features in predicting default risk.
+
+	The tuned XGBoost model is the recommended choice for deployment, given its superior performance .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
